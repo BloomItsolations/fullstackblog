@@ -3,7 +3,7 @@
   --textColor: black;
   --softBg: #f0f0f0;
   --softTextColor: #626262;
-  --cardbg:#f8f9f9;
+  --cardbg: #f8f9f9;
 }
 
 * {
@@ -82,11 +82,11 @@ a {
   }
 }
 
-.ql-container{
+.ql-container {
   font-size: 28px !important;
   height: 400px;
 }
 
-.quill > .ql-container > .ql-editor.ql-blank::before{
+.quill > .ql-container > .ql-editor.ql-blank::before {
   color: #b3b3b1;
 }

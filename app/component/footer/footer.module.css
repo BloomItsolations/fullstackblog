@@ -8,13 +8,10 @@
   color: var(--softTextColor);
 }
 
-
-
 .link {
   font-size: 23px;
-
 }
-.copyright{
+.copyright {
   font-size: 25px;
   margin-top: 10px;
 }
@@ -24,14 +21,15 @@
   gap: 10px;
 }
 
-@media screen and (max-width: 1024px) {}
+@media screen and (max-width: 1024px) {
+}
 
-@media screen and (max-width: 768px) {}
+@media screen and (max-width: 768px) {
+}
 
 @media screen and (max-width: 640px) {
-  .copyright{
+  .copyright {
     font-size: 10px;
     margin-top: 10px;
   }
-   
 }
