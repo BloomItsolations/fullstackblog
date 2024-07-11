@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import "react-quill/dist/quill.snow.css";
-import styles from "../../styles/write.module.css";
+import styles from "./write.module.css";
 
 // Dynamically import ReactQuill to prevent server-side rendering issues
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
