@@ -21,7 +21,19 @@ body {
 
 a {
   color: inherit;
-  text-decoration: none;
+  text-decoration: none !important;
+}
+span,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+a,
+h6 {
+  color: inherit;
+  text-transform: capitalize !important;
 }
 
 .dark {
@@ -39,7 +51,7 @@ a {
 }
 
 .container {
-  height: 100vh;
+  min-height: 100vh;
   background-color: var(--bg);
   color: var(--textColor);
   margin-left: auto;

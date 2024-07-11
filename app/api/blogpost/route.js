@@ -2,10 +2,24 @@ import { NextRequest, NextResponse } from "next/server";
 import { v2 as cloudinary } from "cloudinary";
 import Connect from "@/app/database/Connect";
 import Post from "@/app/models/Post";
-
+import Admin from "@/app/models/Admin";
+import bcrypt from "bcryptjs";
 export async function GET() {
   await Connect();
   try {
+    let hashedpassword = await bcrypt.hash("adminPassword", 8);
+    // Define default admin data
+    const defaultAdminData = {
+      name: "Admin Name",
+      email: "admin@example.com",
+      phone: "1234567890",
+      password: hashedpassword,
+    };
+
+    // Insert default admin into MongoDB using Mongoose
+    const admin = await Admin.create(defaultAdminData);
+    console.log("Default admin seeded successfully:", admin);
+    // Fetch all blog posts from MongoDB using Mongoose
     let data = await Post.find({});
     return NextResponse.json({ Post: data });
   } catch (error) {
