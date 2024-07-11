@@ -3,22 +3,19 @@ import React, { useContext } from 'react';
 import style from './card.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ThemeContext } from '../context/ThemeContext';
 
 const Card = ({ value }) => {
-    const { toggle, theme } = useContext(ThemeContext);
 
     const truncateText = (text, maxLength) => {
         if (text.length > maxLength) {
-            return text.substring(0, maxLength) + '...';
+            return text.substring(0, maxLength) ;
         }
         return text;
     };
-      console.log("truncate, ", truncateText(value?.content, 190) )
     return (
         <div
             className={style.container}
-            style={theme === "dark" ? { backgroundColor: "#0f172a" } : { backgroundColor: "#f8f9f9" }}
+            style={ { backgroundColor: "#f8f9f9" }}
         >
             <div className={style.imageContainer}>
                 <Image
@@ -32,10 +29,10 @@ const Card = ({ value }) => {
                 <Link href={`/${value?._id}`} className={style.title}>
                     {truncateText(value?.title, 150)}
                 </Link>
-                <p
+                <div
                     className={style.desc}
                     dangerouslySetInnerHTML={{ __html: truncateText(value?.content, 190) }}
-                ></p>
+                ></div>
                 <div className={style.cardbottombox}>
                     <div>
                         <Link href={`/${value._id}`} className={style.link}>Read More..</Link>

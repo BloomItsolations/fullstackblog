@@ -21,13 +21,11 @@ export async function POST(request) {
     if (!formData.has('file') || !formData.has('title') || !formData.has('AdminId') || !formData.has('content') || !formData.has('authername')) {
         return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
-
     cloudinary.config({
         cloud_name: process.env.CLOUD_NAME,
         api_key: process.env.API_KEY,
         api_secret: process.env.API_SECRET
     });
-
     const file = formData.get('file');
     const title = formData.get('title');
     const AdminId = formData.get('AdminId');
@@ -37,9 +35,22 @@ export async function POST(request) {
     try {
         const arrayBuffer = await file.arrayBuffer();
         const base64String = Buffer.from(arrayBuffer).toString('base64');
-        const result = await cloudinary.uploader.upload(`data:${file.type};base64,${base64String}`, {
-            folder: 'uploads'
-        });
+        let result;
+
+        if (file.type.startsWith('image/')) {
+            result = await cloudinary.uploader.upload(`data:${file.type};base64,${base64String}`, {
+                folder: 'uploads',
+                resource_type: 'image'
+            });
+        } else if (file.type.startsWith('video/')) {
+            result = await cloudinary.uploader.upload(`data:${file.type};base64,${base64String}`, {
+                folder: 'uploads',
+                resource_type: 'video'
+            });
+        } else {
+            return NextResponse.json({ error: 'Unsupported file type' }, { status: 400 });
+        }
+
         await Connect();
         const newBlogPost = new Post({
             title,

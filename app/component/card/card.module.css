@@ -47,6 +47,7 @@
   font-size: 25px;
   font-weight: 600;
 }
+
 .link {
   border-bottom: 1px solid crimson;
   width: max-content;
@@ -58,7 +59,8 @@
   justify-content: space-between;
 
 }
-.auther{
+
+.auther {
   font-size: 14px;
   color: gray;
   font-weight: 500;
@@ -67,16 +69,18 @@
 @media screen and (max-width: 1280px) {}
 
 @media screen and (max-width: 640px) {
-    .imageContainer{
-      display: none;
-    }
+  .imageContainer {
+    display: none;
+  }
+
   .container {
     display: flex;
     flex-direction: column;
   }
-  .title{
+
+  .title {
     font-size: 20px;
     font-weight: 400;
   }
-  
+
 }

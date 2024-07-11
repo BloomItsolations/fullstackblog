@@ -1,4 +1,3 @@
-import Menu from "../component/menu/Menu";
 import style from "./single.module.css";
 import Image from "next/image";
 
@@ -20,10 +19,10 @@ const SinglePage = async ({ params }) => {
       />
       <div className={style.content}>
         <h1 className={style.title}>{newdata.title}</h1>
-        <p
+        <div
           className={style.text}
           dangerouslySetInnerHTML={{ __html: newdata.content }}
-        ></p>
+        ></div>
       </div>
     </div>
   );
