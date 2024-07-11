@@ -9,6 +9,7 @@ export async function GET() {
     let data = await Post.find({});
     return NextResponse.json({ Post: data });
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 }

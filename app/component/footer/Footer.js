@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <div className={styles.container}>
+    <footer className={styles.container}>
       <Link className={styles.link} href={"/"}>
         Cypress Hotels Pvt. Ltd
       </Link>
@@ -18,7 +18,7 @@ const Footer = () => {
         &copy; {new Date().getFullYear()} Cypress Hotels Pvt. Ltd. All rights
         reserved.
       </p>
-    </div>
+    </footer>
   );
 };
 
