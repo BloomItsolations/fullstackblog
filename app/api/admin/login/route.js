@@ -9,7 +9,7 @@ import initMiddleware from "@/app/api/middleware/corsMiddleware";
 const cors = initMiddleware(
   Cors({
     methods: ["GET", "POST", "OPTIONS"], // Allow methods
-    origin: "https://cypress-blog-dashboard.vercel.app", // Allow only this origin to access the API
+    origin: "*", // Allow only this origin to access the API
   })
 );
 export let POST = async (req) => {
