@@ -5,6 +5,7 @@
     padding: 20px;
     max-width: 1350px;
     margin: auto;
+    padding-top: 2px;
 }
 
 .image {
@@ -32,7 +33,35 @@
     text-align: justify;
 }
 
-@media (max-width: 768px) {
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.2em;
+    }
+
+    .text {
+        font-size: 0.9em;
+    }
+    .image{
+        height: 150px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    
+    .media {
+        width: 700px !important;
+        height: 400px !important;
+    }
+}
+
+
+@media (max-width: 767px) {
+    
+    .media {
+        width: 100% !important;
+        height: auto !important;
+    }
     .title {
         font-size: 1.5em;
         margin-top: 10px;
@@ -48,17 +77,8 @@
         border-radius: 10px;
         object-fit: cover;
     }
-}
+    .container{
+        padding-top: 2px;
 
-@media (max-width: 480px) {
-    .title {
-        font-size: 1.2em;
-    }
-
-    .text {
-        font-size: 0.9em;
-    }
-    .image{
-        height: 150px;
     }
 }
