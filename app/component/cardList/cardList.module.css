@@ -1,0 +1,18 @@
+.container {
+  flex: 5
+}
+
+.title {
+  margin: 50px 0px;
+}
+
+.post {
+  margin: 50px 0px;
+
+}
+
+@media screen and (max-width: 640px) {
+  .post {
+    margin: 17px 0px;
+  }
+}

@@ -1,0 +1,60 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { v2 as cloudinary } from 'cloudinary';
+import Connect from '@/app/database/Connect';
+import Post from '@/app/models/Post';
+
+export async function GET() {
+    await Connect();
+    try {
+        let data = await Post.find({});
+        return NextResponse.json({ "Post": data });
+    }
+    catch (error) {
+        return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    }
+}
+
+
+export async function POST(request) {
+    const formData = await request.formData();
+
+    if (!formData.has('file') || !formData.has('title') || !formData.has('AdminId') || !formData.has('content') || !formData.has('authername')) {
+        return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+    }
+
+    cloudinary.config({
+        cloud_name: process.env.CLOUD_NAME,
+        api_key: process.env.API_KEY,
+        api_secret: process.env.API_SECRET
+    });
+
+    const file = formData.get('file');
+    const title = formData.get('title');
+    const AdminId = formData.get('AdminId');
+    const content = formData.get('content');
+    const authername = formData.get('authername');
+
+    try {
+        const arrayBuffer = await file.arrayBuffer();
+        const base64String = Buffer.from(arrayBuffer).toString('base64');
+        const result = await cloudinary.uploader.upload(`data:${file.type};base64,${base64String}`, {
+            folder: 'uploads'
+        });
+        await Connect();
+        const newBlogPost = new Post({
+            title,
+            image: result.secure_url,
+            AdminId: AdminId,
+            content,
+            authername,
+            comments: []
+        });
+
+        const savedBlogPost = await newBlogPost.save();
+
+        return NextResponse.json(savedBlogPost, { status: 200 });
+    } catch (error) {
+        console.error('Error uploading file to Cloudinary:', error);
+        return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    }
+}
