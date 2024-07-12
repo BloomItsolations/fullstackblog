@@ -3,7 +3,7 @@
   --textColor: black;
   --softBg: #f0f0f0;
   --softTextColor: #626262;
-  --cardbg:#f8f9f9;
+  --cardbg: #f8f9f9;
 }
 
 * {
@@ -15,11 +15,25 @@
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  background-color: var(--bg);
+  color: var(--textColor);
 }
 
 a {
   color: inherit;
-  text-decoration: none;
+  text-decoration: none !important;
+}
+span,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+a,
+h6 {
+  color: inherit;
+  text-transform: capitalize !important;
 }
 
 .dark {
@@ -82,11 +96,11 @@ a {
   }
 }
 
-.ql-container{
+.ql-container {
   font-size: 28px !important;
   height: 400px;
 }
 
-.quill > .ql-container > .ql-editor.ql-blank::before{
+.quill > .ql-container > .ql-editor.ql-blank::before {
   color: #b3b3b1;
 }

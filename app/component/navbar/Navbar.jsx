@@ -1,12 +1,14 @@
-import React from 'react'
-import styles from './navbar.module.css'
-import Link from 'next/link'
+import React from "react";
+import styles from "./navbar.module.css";
+import Link from "next/link";
 const Navbar = () => {
   return (
-    <div className={styles.container}>
-     <div className={styles.logo}> <Link href={'/'}>Cypress Hotels Pvt. Ltd </Link></div>
-    </div>
-  )
-}
+    <header className={styles.container}>
+      <Link className={styles.heading} href={"/"}>
+        Cypress Hotels Pvt. Ltd{" "}
+      </Link>
+    </header>
+  );
+};
 
-export default Navbar
+export default Navbar;

@@ -4,7 +4,9 @@ import Image from "next/image";
 const SinglePage = async ({ params }) => {
   let { slug } = params;
 
-  let data = await fetch(`${process.env.BASE_URL}/api/blogpost/${slug}`, { cache: 'no-store' });
+  let data = await fetch(`${process.env.BASE_URL}/api/blogpost/${slug}`, {
+    cache: "no-store",
+  });
   data = await data.json();
   let newdata = data?.data;
 

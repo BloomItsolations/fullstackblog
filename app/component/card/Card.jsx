@@ -1,3 +1,4 @@
+
 'use client'
 import React, { useState, useEffect } from 'react';
 import style from './card.module.css';
@@ -63,7 +64,9 @@ const Card = ({ value }) => {
                 </div>
             </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Card;
