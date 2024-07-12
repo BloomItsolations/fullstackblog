@@ -89,6 +89,7 @@ export async function POST(request) {
       title,
       image: result.secure_url,
       AdminId: AdminId,
+      slug: title?.toLowerCase().replace(/ /g, "-"),
       content,
       authername,
       comments: [],

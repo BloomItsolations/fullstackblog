@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 let blogpostData = new mongoose.Schema(
   {
     title: { type: String, required: true },
+    slug: { type: String, required: true },
     image: { type: String },
     AdminId: {
       type: mongoose.Schema.Types.ObjectId,

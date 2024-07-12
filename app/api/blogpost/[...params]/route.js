@@ -4,29 +4,36 @@ import { NextResponse } from "next/server";
 import { v2 as cloudinary } from "cloudinary";
 
 export let GET = async (req, { params }) => {
-  let { id } = params;
+  console.log(params);
+  let [slug, _id] = params.params; // Destructure id and slug from params
   await Connect();
   try {
-    let data = await Post.findById(id);
+    let data = await Post.findOne({ _id: _id, slug: slug });
+    if (!data) {
+      return NextResponse.json({ msg: "Post not found" }, { status: 404 });
+    }
     return NextResponse.json({ data });
   } catch (e) {
-    return NextResponse.json({ msg: e.msg });
+    return NextResponse.json({ msg: e.message }, { status: 500 });
   }
 };
 
 export let DELETE = async (req, { params }) => {
-  let { id } = params;
+  let [id] = params.params; // Destructure id from params
   await Connect();
   try {
     let deletedata = await Post.findByIdAndDelete(id);
+    if (!deletedata) {
+      return NextResponse.json({ msg: "Post not found" }, { status: 404 });
+    }
     return NextResponse.json({ msg: "Item Deleted Successfully" });
   } catch (e) {
-    return NextResponse.json({ msg: e.message });
+    return NextResponse.json({ msg: e.message }, { status: 500 });
   }
 };
 
 export async function PUT(request, { params }) {
-  let { id } = params;
+  let [id] = params.params; // Destructure id from params
   const formData = await request.formData();
 
   if (

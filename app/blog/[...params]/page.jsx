@@ -1,15 +1,16 @@
 import style from "./single.module.css";
 import Image from "next/image";
-
+import MarkdownPreview from "@/app/component/MarkdownPreview";
 const SinglePage = async ({ params }) => {
-  let { slug } = params;
-
-  let data = await fetch(`${process.env.BASE_URL}/api/blogpost/${slug}`, {
-    cache: "no-store",
-  });
+  let [slug, _id] = params.params;
+  let data = await fetch(
+    `${process.env.BASE_URL}/api/blogpost/${slug}/${_id}`,
+    {
+      cache: "no-store",
+    }
+  );
   data = await data.json();
   let newdata = data?.data;
-
   const isVideo = (url) => {
     return /\.(mp4|webm|ogg)$/i.test(url);
   };
@@ -20,19 +21,19 @@ const SinglePage = async ({ params }) => {
 
   return (
     <div className={style.container}>
-      {isVideo(newdata.image) ? (
+      {isVideo(newdata?.image) ? (
         <video
           style={{ width: "1000px", height: "500px", objectFit: "contain" }}
           controls
           className={style.media}
         >
-          <source src={newdata.image} type="video/mp4" />
+          <source src={newdata?.image} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       ) : (
         <Image
-          src={newdata.image}
-          alt={newdata.title}
+          src={newdata?.image}
+          alt={"cover Image"}
           width={1200}
           height={350}
           className={style.image}
@@ -40,11 +41,8 @@ const SinglePage = async ({ params }) => {
       )}
 
       <div className={style.content}>
-        <h1 className={style.title}>{newdata.title}</h1>
-        <div
-          className={style.text}
-          dangerouslySetInnerHTML={{ __html: newdata.content }}
-        ></div>
+        <h1 className={style.title}>{newdata?.title}</h1>
+        <MarkdownPreview markdown={newdata?.content} />
       </div>
     </div>
   );
