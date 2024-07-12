@@ -10,10 +10,10 @@
 }
 
 .imageContainer {
-  height: 250px; /* Default height */
+  height: 250px;
   position: relative;
   width: 250px;
-  top: 0; /* Ensure correct top positioning */
+  top: 0;
 }
 
 .image {
@@ -66,7 +66,6 @@
   .imageContainer {
     height: 250px;
     width: 100%;
-    /* top: 0; */ /* Adjust or remove as necessary */
   }
 
   .container {
@@ -87,13 +86,13 @@
   }
 
   .imageContainer {
-    height: 300px; /* Adjust height for larger screens */
-    width: 300px; /* Adjust width for larger screens */
-    margin-right: 20px; /* Example margin adjustment */
+    height: 300px;
+    width: 300px;
+    margin-right: 20px;
   }
 
   .textContainer {
-    flex: 1; /* Adjust flex proportions */
+    flex: 1;
   }
 
   .title {

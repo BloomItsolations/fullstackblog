@@ -4,17 +4,9 @@ import Cors from "cors";
 import bcrypt from "bcryptjs";
 import Connect from "@/app/database/Connect";
 import Admin from "@/app/models/Admin";
-import initMiddleware from "@/app/api/middleware/corsMiddleware";
 
-const cors = initMiddleware(
-  Cors({
-    methods: ["GET", "POST", "OPTIONS"], // Allow methods
-    origin: "*", // Allow only this origin to access the API
-  })
-);
 export let POST = async (req) => {
   // Run the middleware
-  await cors(req, res);
   // Connect
   await Connect();
   let data = await req.json();
