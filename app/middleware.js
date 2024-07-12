@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 const allowedOrigins = [
   "http://127.0.0.1:3000",
-  "https://cypress-blog-dashboard.vercel.app/login",
+  "https://cypress-blog-dashboard.vercel.app",
 ];
 
 const corsOptions = {
