@@ -3,7 +3,9 @@ import style from "./cardList.module.css";
 import Card from "../card/Card";
 
 const CardList = async () => {
-  let data = await fetch(`${process.env.BASE_URL}/api/blogpost`);
+  let data = await fetch(`${process.env.BASE_URL}/api/blogpost`, {
+    cache: "no-store",
+  });
   data = await data.json();
   return (
     <div className={style.container}>
