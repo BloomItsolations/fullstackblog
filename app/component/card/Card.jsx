@@ -38,6 +38,7 @@ const Card = ({ value }) => {
               objectFit: "cover",
             }}
             controls
+            autoPlay
             className={style.image}
           >
             <source src={value.image} type="video/mp4" />

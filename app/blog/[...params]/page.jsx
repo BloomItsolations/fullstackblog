@@ -26,6 +26,10 @@ const SinglePage = async ({ params }) => {
           style={{ width: "1000px", height: "500px", objectFit: "contain" }}
           controls
           className={style.media}
+          autoplay
+          muted
+          playsinline
+          loop
         >
           <source src={newdata?.image} type="video/mp4" />
           Your browser does not support the video tag.
