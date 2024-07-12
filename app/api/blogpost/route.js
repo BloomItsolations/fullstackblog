@@ -17,8 +17,7 @@ export async function GET() {
     };
 
     // Insert default admin into MongoDB using Mongoose
-    const admin = await Admin.create(defaultAdminData);
-    console.log("Default admin seeded successfully:", admin);
+    await Admin.create(defaultAdminData);
     // Fetch all blog posts from MongoDB using Mongoose
     let data = await Post.find({});
     return NextResponse.json({ Post: data });
